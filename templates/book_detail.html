@@ -1,0 +1,26 @@
+{% load static %}
+{% include 'header.html' %}
+<link rel="stylesheet" href="{% static 'css/book_list.css' %}">
+h1 class="text_color">Все новости</h1>
+
+    <h1>{{ book.title }}</h1>
+    <p>Автор: {{ book.author }}</p>
+    <p>Жанр: {{ book.get_genre_display }}</p>
+    <p>Дата публикации: {{ book.published_date }}</p>
+    <p>Количество страниц: {{ book.pages }}</p>
+    <p>Издатель: {{ book.publisher }}</p>
+    <p>ISBN: {{ book.isbn }}</p>
+    <p>Цена: ${{ book.price }}</p>
+    <p>Описание: {{ book.description }}</p>
+    <a href="{% url 'book_list' %}">Назад к списку</a>
+
+<div class="center">
+    {% for j in post_id.review_post.all %}
+    <p>
+        <h3>{{ j.text_post }}</h3>
+    </p>
+    <p>{{ j.created_at }}</p>
+    {% endfor %}
+</div>
+
+{% include 'footer.html' %}

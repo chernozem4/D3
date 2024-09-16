@@ -1,0 +1,29 @@
+
+{% include 'header.html' %}
+<br><br><br>
+
+
+
+<h1>Фильтрация продуктов</h1>
+
+    <form method="get" action="">
+        <label for="tag">Выберите категорию:</label>
+        <select name="tag" id="tag">
+            <option value="">Все</option>
+            {% for tag in tags %}
+                <option value="{{ tag.name }}">{{ tag.name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Фильтровать</button>
+    </form>
+
+    <ul>
+        {% for product in products %}
+            <li>{{ product.name }} - {{ product.description }} ({{ product.price }}$)</li>
+        {% empty %}
+            <li>Нет доступных продуктов</li>
+        {% endfor %}
+    </ul>
+
+{% include 'footer.html' %}
+

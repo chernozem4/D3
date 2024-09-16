@@ -1,0 +1,12 @@
+{% load static %}
+{% include 'header.html' %}
+<link rel="stylesheet" href="{% static 'css/create_form.css' %}">
+<body>
+    <h1>{{ form.instance.pk|default:"Добавить книгу" }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Сохранить</button>
+    </form>
+    <a href="{% url 'book_list' %}">Назад к списку</a>
+{% include 'footer.html' %}

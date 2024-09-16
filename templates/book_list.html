@@ -9,15 +9,17 @@ h1 class="text_color">Все новости</h1>
 {% for book in books %}
     <div class="square_mom">
 {% for i in post_object %}
-<div class="card" style="width: 18rem;">
-    <img src="{{ i.image.url }}" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">{{ i.title }}</h5>
-        <p class="card-text">{{ i.created_at }}</p>
-        <a href="/post_list/{{ i.id }}/" class="btn btn-primary">Подробнее</a>
-    </div>
-</div>
-{% endfor %}
+<h1>Список книг</h1>
+    <a href="{% url 'book_create' %}">Добавить книгу</a>
+    <ul>
+        {% for book in books %}
+            <li>
+                <a href="{% url 'book_detail' book.pk %}">{{ book.title }}</a>
+                <a href="{% url 'book_update' book.pk %}">Изменить</a>
+                <a href="{% url 'book_delete' book.pk %}">Удалить</a>
+            </li>
+        {% endfor %}
+    </ul>
 </div>
 {% endfor %}
 
